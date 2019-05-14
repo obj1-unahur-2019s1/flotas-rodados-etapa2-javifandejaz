@@ -1,8 +1,10 @@
 import rodados.*
+import pedidos.*
 
 class Dependencia {
 	const flota = #{}
 	var property empleados = 0
+
 	
 	method agregarAFlota(rodado) {
 		flota.add(rodado)
@@ -29,7 +31,7 @@ class Dependencia {
 	}
 	
 	method capacidadFaltante() {
-		return empleados - self.capacidadTotal()
+		return 0.max(empleados - self.capacidadTotal())
 	}
 	
 	method capacidadTotal() {
