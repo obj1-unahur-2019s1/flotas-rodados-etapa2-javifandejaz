@@ -49,15 +49,22 @@ class Dependencia {
 	
 	method totalPasajeros(){ return pedidos.sum({i=>i.cantidad()})}
 	
-	method noPuedeSatisfacer(){return pedidos.filter({i=> not i.puedeSatisfacer(flota.any({e=>e}))})}
 	
-	// por qué no andan??
 	
-	// method colorIncompatible(color){ return pedidos.all({i=>i.coloresIncompatibles().contains({color})})}
+	//method noPuedeSatisfacer(){return pedidos.filter({p=> not flota.any({r=>p.puedeSatisfacer(r)})})}
+	
+	method noPuedeSatisfacer(){return pedidos.filter({p=> not self.puedeSerSatisfecho(p)})}
+	
+	method puedeSerSatisfecho(pedido){return flota.any({a=>pedido.puedeSatisfacer(a)})}
+	
+	
+	
+	
+	method colorIncompatible(color){ return pedidos.all({i=>i.coloresIncompatibles().contains(color)})}
 	
 	// method colorIncompatible(color){ return pedidos.all({i=>i.coloresIncompatibles().all({e=>e == color})})}
 	
-	method colorIncompatible(color){ return pedidos.all({i=>not i.coloresIncompatibles().all({e=>e!=color})})}
+	//method colorIncompatible(color){ return pedidos.all({i=>not i.coloresIncompatibles().all({e=>e!=color})})}
 	
 		
 }

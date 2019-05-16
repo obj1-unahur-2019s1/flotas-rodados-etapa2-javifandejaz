@@ -10,7 +10,11 @@ describe "Flota de rodados" {
 		
 		const viaje1 = new Pedido(distancia= 960 , tiempoMaximo = 8, cantidad = 4, coloresIncompatibles =["azul", "negro"])
 		const viaje2 = new Pedido(distancia= 960 , tiempoMaximo = 8, cantidad = 4, coloresIncompatibles =["azul", "negro","rojo"])
+		const viaje3 = new Pedido(distancia= 960 , tiempoMaximo = 8, cantidad = 4, coloresIncompatibles =["azul", "blanco","rojo"])
 		
+		cultura.agregarPedidos(viaje3)
+		cultura.agregarPedidos(viaje2)
+		cultura.agregarPedidos(viaje1)
 		assert.notThat(cultura.esGrande())
 		cultura.agregarAFlota(cachito)
 		cultura.agregarAFlota(new Kwid(tanqueAdicional = true))
@@ -26,6 +30,10 @@ describe "Flota de rodados" {
 		assert.equals(5, cultura.capacidadFaltante())
 		assert.equals(true, viaje1.puedeSatisfacer(cachito))
 		assert.equals(false, viaje2.puedeSatisfacer(cachito))
+		assert.equals(#{viaje3, viaje2}, cultura.noPuedeSatisfacer())
+		assert.equals(true, cultura.colorIncompatible("azul"))
+		assert.equals(false, cultura.colorIncompatible("rojo"))
+		assert.equals(false, cultura.colorIncompatible("amarillo"))
 		}
 		
 	
