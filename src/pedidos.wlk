@@ -14,5 +14,9 @@ class Pedido {
 		and coloresIncompatibles.all({i=>i != auto.color()})
 	}
 	
+	method acelerar(){ tiempoMaximo = tiempoMaximo - 1 }
 	
+	method relajar(){ tiempoMaximo = tiempoMaximo + 1}
+	
+	method coloresIncompatibles(){return coloresIncompatibles }
 }

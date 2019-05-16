@@ -4,6 +4,7 @@ import pedidos.*
 class Dependencia {
 	const flota = #{}
 	var property empleados = 0
+	const pedidos = #{}
 
 	
 	method agregarAFlota(rodado) {
@@ -23,7 +24,7 @@ class Dependencia {
 	method capacidadTotalEnColor(unColor) {
 		return flota
 			.filter { r => r.color() == unColor }
-			.sum { r => r.capacidad() }
+			.sum { r => r.capacidad()}
 	}
 	
 	method colorDelRodadoMasRapido() {
@@ -35,10 +36,32 @@ class Dependencia {
 	}
 	
 	method capacidadTotal() {
-		return flota.sum { r => r.capacidad() }
+		return flota.sum {r => r.capacidad()}
 	}
 	
 	method esGrande() {
 		return empleados >= 40 and flota.size() >= 5
 	}
+	
+	method agregarPedidos(pedido){ pedidos.add(pedido)}
+	
+	method quitarPedidos(pedido){ pedidos.remove(pedido)}
+	
+	method totalPasajeros(){ return pedidos.sum({i=>i.cantidad()})}
+	
+	method noPuedeSatisfacer(){return pedidos.filter({i=> not i.puedeSatisfacer(flota.any({e=>e}))})}
+	
+	// por qué no andan??
+	
+	// method colorIncompatible(color){ return pedidos.all({i=>i.coloresIncompatibles().contains({color})})}
+	
+	// method colorIncompatible(color){ return pedidos.all({i=>i.coloresIncompatibles().all({e=>e == color})})}
+	
+	method colorIncompatible(color){ return pedidos.all({i=>not i.coloresIncompatibles().all({e=>e!=color})})}
+	
+		
 }
+
+
+
+

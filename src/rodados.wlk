@@ -7,16 +7,16 @@ class Corsa {
 }
 
 class Kwid {
-	var property tieneTanqueAdicional
+	var property tanqueAdicional
 	
 	method capacidad() = 
-		if (tieneTanqueAdicional) {3} else {4}
+		if (tanqueAdicional) {3} else {4}
 		
 	method velocidadMaxima() = 
-		if (tieneTanqueAdicional) {120} else {110}
+		if (tanqueAdicional) {120} else {110}
 		
 	method peso() = 
-		if (tieneTanqueAdicional) {1350} else {1200}
+		if (tanqueAdicional) {1350} else {1200}
 		
 	method color() = "azul"
 }
